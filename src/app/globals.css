@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Hawaiian-inspired color variables */
+  --ocean-primary: #1890ff;
+  --ocean-light: #e6f7ff;
+  --forest-primary: #38a138;
+  --forest-light: #f0f9f0;
+  --coral-primary: #ff4d1a;
+  --sand-primary: #f1b896;
+  --sky-primary: #0ea5e9;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Light theme */
+  --background: #fefaf7;
+  --foreground: #1a4a1a;
+  --surface: #ffffff;
+  --surface-secondary: #f0f9f0;
+  --border: #c3e6c3;
+  --accent: var(--ocean-primary);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0c2818;
+    --foreground: #dcf2dc;
+    --surface: #1a4a1a;
+    --surface-secondary: #257025;
+    --border: #2d8a2d;
+    --accent: var(--sky-primary);
   }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+/* Smooth scrolling for better user experience */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Hawaiian cultural styling utilities */
+.cultural-gradient {
+  background: linear-gradient(135deg, var(--ocean-primary) 0%, var(--forest-primary) 50%, var(--coral-primary) 100%);
+}
+
+.ocean-gradient {
+  background: linear-gradient(180deg, var(--sky-primary) 0%, var(--ocean-primary) 100%);
+}
+
+.text-shadow-cultural {
+  text-shadow: 0 2px 4px rgba(26, 74, 26, 0.25);
 }

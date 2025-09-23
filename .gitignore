@@ -33,6 +33,24 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# Hawaiian cultural content security
+# Sacred content should only be accessible through proper database permissions
+private-cultural-content/
+sacred-moolelo/
+confidential-audio/
+
+# Large media files (use cloud storage/LFS instead)
+*.wav
+*.mp3
+*.mp4
+*.mov
+*.avi
+public/audio/
+public/media/
+
+# Supabase local development
+.supabase/
+
 # vercel
 .vercel
 
