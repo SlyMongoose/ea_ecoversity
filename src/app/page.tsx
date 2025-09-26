@@ -7,6 +7,7 @@ import AuthModal from '@/components/auth/AuthModal'
 import UserProfile from '@/components/auth/UserProfile'
 import { useAuth } from '@/components/auth/AuthProvider'
 import { Button } from '@/components/ui/Button'
+import { isSupabaseConfigured } from '@/lib/supabase'
 
 export default function Home() {
   const [authModalOpen, setAuthModalOpen] = useState(false)
@@ -32,6 +33,16 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-100 to-ocean-100">
+      {/* Configuration Banner */}
+      {!isSupabaseConfigured && (
+        <div className="bg-coral-100 border-b border-coral-300 p-3 text-center">
+          <p className="text-coral-800 text-sm">
+            🔧 <strong>Demo Mode:</strong> Set up Supabase credentials in .env.local to enable authentication and database features.
+            See <a href="https://github.com/SlyMongoose/ea_ecoversity#quick-start" target="_blank" rel="noopener noreferrer" className="underline">setup instructions</a>.
+          </p>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className="relative z-20 p-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">

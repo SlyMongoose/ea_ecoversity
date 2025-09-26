@@ -1,25 +1,34 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-// Create a basic client for development
-export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: true
-  }
-})
+// Check if we have valid Supabase configuration
+export const isSupabaseConfigured = !!(supabaseUrl && supabaseAnonKey &&
+  supabaseUrl.startsWith('https://') &&
+  supabaseUrl.includes('.supabase.co'))
+
+// Create supabase client only if properly configured
+export const supabase = isSupabaseConfigured
+  ? createClient(supabaseUrl!, supabaseAnonKey!, {
+      auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true
+      }
+    })
+  : null
 
 // Helper functions for common database operations
 export async function getCurrentUser() {
+  if (!supabase) throw new Error('Supabase not configured')
   const { data: { user }, error } = await supabase.auth.getUser()
   if (error) throw error
   return user
 }
 
 export async function getUserProfile(userId: string) {
+  if (!supabase) return null
   try {
     const { data, error } = await supabase
       .from('user_profiles')
@@ -31,11 +40,12 @@ export async function getUserProfile(userId: string) {
     return data
   } catch (error) {
     console.error('Error fetching user profile:', error)
-    throw error
+    return null
   }
 }
 
 export async function updateUserProfile(userId: string, updates: Record<string, any>) {
+  if (!supabase) throw new Error('Supabase not configured')
   try {
     const { data, error } = await supabase
       .from('user_profiles')
@@ -58,6 +68,7 @@ export async function getMoolelo(filters?: {
   limit?: number
   offset?: number
 }) {
+  if (!supabase) return []
   try {
     let query = supabase
       .from('moolelo')

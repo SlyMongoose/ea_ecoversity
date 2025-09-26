@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react'
 import { User, Session } from '@supabase/supabase-js'
-import { supabase, getUserProfile } from '@/lib/supabase'
+import { supabase, getUserProfile, isSupabaseConfigured } from '@/lib/supabase'
 import { CulturalLevel, CulturalRole } from '@/types/cultural'
 
 interface UserProfile {
@@ -44,6 +44,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // Check if Supabase is configured
+    if (!isSupabaseConfigured || !supabase) {
+      setLoading(false)
+      return
+    }
+
     // Get initial session
     const getInitialSession = async () => {
       const { data: { session }, error } = await supabase.auth.getSession()
@@ -65,7 +71,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     getInitialSession()
 
     // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+    const { data: { subscription } } = supabase!.auth.onAuthStateChange(
       async (event, session) => {
         setSession(session)
         setUser(session?.user ?? null)
