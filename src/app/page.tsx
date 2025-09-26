@@ -44,16 +44,16 @@ export default function Home() {
       )}
 
       {/* Navigation */}
-      <nav className="relative z-20 p-4">
+      <nav className="relative z-20 p-4 bg-white/80 backdrop-blur-sm border-b border-white/20">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="text-2xl font-bold text-forest-800">
+          <div className="text-2xl font-bold text-forest-900">
             Ea Ecoversity
           </div>
 
           <div className="flex items-center gap-4">
             {user ? (
               <>
-                <span className="text-forest-700">
+                <span className="text-forest-800">
                   Aloha, {profile?.hawaiian_name || profile?.name || user.email}
                 </span>
                 <Button
