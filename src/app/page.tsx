@@ -35,10 +35,10 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-b from-sky-100 to-ocean-100">
       {/* Configuration Banner */}
       {!isSupabaseConfigured && (
-        <div className="bg-coral-100 border-b border-coral-300 p-3 text-center">
-          <p className="text-coral-800 text-sm">
-            🔧 <strong>Demo Mode:</strong> Set up Supabase credentials in .env.local to enable authentication and database features.
-            See <a href="https://github.com/SlyMongoose/ea_ecoversity#quick-start" target="_blank" rel="noopener noreferrer" className="underline">setup instructions</a>.
+        <div className="bg-amber-50 border-b border-amber-200 p-3 text-center">
+          <p className="text-amber-800 text-sm">
+            🌺 <strong>Preview Mode:</strong> You're viewing the Hawaiian Cultural Learning Platform.
+            <a href="https://github.com/SlyMongoose/ea_ecoversity#quick-start" target="_blank" rel="noopener noreferrer" className="underline ml-1">Set up your own instance</a> to enable full features.
           </p>
         </div>
       )}
@@ -104,18 +104,18 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <header className="relative h-screen flex flex-col items-center justify-center text-center px-4">
-        <div className="absolute inset-0 ocean-gradient opacity-90"></div>
+      <header className="relative min-h-[calc(100vh-120px)] flex flex-col items-center justify-center text-center px-4 py-12">
+        <div className="absolute inset-0 bg-gradient-to-br from-ocean-400 via-ocean-500 to-ocean-600"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 text-shadow-cultural">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 drop-shadow-2xl">
             Ea Ecoversity
           </h1>
-          <h2 className="text-2xl md:text-3xl text-sand-100 mb-4 font-medium">
+          <h2 className="text-xl md:text-2xl lg:text-3xl text-white/95 mb-6 font-medium drop-shadow-lg">
             ʻOno ka ʻike i ka hoʻonaʻauao
           </h2>
-          <p className="text-lg md:text-xl text-sand-200 mb-8 max-w-2xl mx-auto leading-relaxed">
-            A submersive sandbox educational environment for learning ʻŌlelo Hawaiʻi and Hawaiian knowledge systems
+          <p className="text-base md:text-lg lg:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed drop-shadow">
+            A immersive educational environment for learning ʻŌlelo Hawaiʻi and Hawaiian knowledge systems through culturally-centered storytelling and place-based learning
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
