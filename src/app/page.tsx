@@ -44,13 +44,13 @@ export default function Home() {
       )}
 
       {/* Navigation */}
-      <nav className="relative z-20 p-4 bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
+      <nav className="relative z-20 px-6 py-4 bg-white shadow-sm border-b border-gray-200">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="text-2xl font-bold text-gray-900">
             Ea Ecoversity
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 ml-auto">
             {user ? (
               <>
                 <span className="text-gray-700">
