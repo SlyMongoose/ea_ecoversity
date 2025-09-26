@@ -26,8 +26,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       secondary: 'bg-forest-500 hover:bg-forest-600 text-white hover:scale-105 shadow-cultural focus:ring-forest-300',
       cultural: 'cultural-gradient text-white hover:opacity-90 hover:scale-105 shadow-cultural focus:ring-ocean-300',
       coral: 'bg-coral-500 hover:bg-coral-600 text-white hover:scale-105 shadow-cultural focus:ring-coral-300',
-      outline: 'border-2 border-ocean-500 text-ocean-600 hover:bg-ocean-500 hover:text-white focus:ring-ocean-300',
-      ghost: 'text-forest-600 hover:bg-forest-100 focus:ring-forest-300'
+      outline: 'border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 focus:ring-gray-300',
+      ghost: 'text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:ring-gray-300'
     }
 
     const sizes = {
